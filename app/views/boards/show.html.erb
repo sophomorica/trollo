@@ -2,11 +2,16 @@
 
 <%= @board.name%>
 </h1>
+
+<hr/>
+<h2>
+And your lists
+</h2>
   <ol>
 <% @board.lists.each do |l|%>
     <li>
 
-      <%=link_to l.name, board_list_path(l)%>
+      <%=link_to l.name, board_list_path(@board,l)%>
     </li>
 
 <%end%>
