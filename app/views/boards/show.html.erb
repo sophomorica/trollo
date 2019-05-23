@@ -2,7 +2,15 @@
 
 <%= @board.name%>
 </h1>
+  <ol>
+<% @board.lists.each do |l|%>
+    <li>
 
+      <%=link_to l.name, board_list_path(l)%>
+    </li>
+
+<%end%>
+  </ol>
 
 
 <%= link_to "Edit", edit_board_path(@board), class: "ui button orange"%>

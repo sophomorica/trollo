@@ -5,6 +5,7 @@ class BoardsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -40,6 +41,6 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
   end
   def board_params
-    params.permit(:board).require(:board_name)
+    params.require(:board).permit(:board_name)
   end
 end
