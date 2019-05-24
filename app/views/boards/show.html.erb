@@ -11,28 +11,30 @@ And your lists
 <div class = "card_section">
     <% @board.lists.each do |l|%>
 
-  <div class = "ui card">
-    <div class = "content">
-      <div class = "header">
-        <%= l.name%>
+      <div class = "ui card">
+        <div class = "content">
+          <div class = "header">
+            <%= l.name%>
+          </div>
+          <div class = "description">
+            <%l.tasks.each do |t| %>
+                <h4><%=t.name%></h4>
+            <%end%>
+          </div>
+        </div>
+        <div class = "extra content">
+          <div class = "ui two buttons">
+            
+            <%= link_to "View", board_list_path(@board, l), class: "ui button green inverted"%>
+            <%= link_to "Delete", board_list_path(@board,l), method: :delete, class: "ui button orange inverted"%>
+          </div>
+        </div>
       </div>
-      <div class = "description">
-        <%l.tasks.each do |t| %>
-            <h4><%=t.name%></h4>
-        <%end%>
-      </div>
-    </div>
-    <div class = "extra content">
-      <div class = "ui two buttons">
-        
-        <%= link_to "View", board_list_path(l), class: "ui button green inverted"%>
-        <%= link_to "Delete", board_list_path(l), method: :delete, class: "ui button orange inverted"%>
-      </div>
-    </div>
-  </div>
     <% end%>
 
 </div>
+
+
 
 <%= link_to "Edit", edit_board_path(@board), class: "ui button orange"%>
 <%= link_to "Delete", board_path(@board), method: :delete, class: "ui button orange"%>

@@ -29,10 +29,15 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to lists_path(@board)
+      redirect_to board_list_path(@board)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @list.destroy
+    redirect_to board_list_path(id)
   end
   
 
