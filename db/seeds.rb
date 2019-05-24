@@ -1,16 +1,16 @@
 3.times do 
   board = Board.create(
-    board_name: Faker::Book.genre,
+    board_name: Faker::Cosmere.shard,
     )
     3.times do
       list = List.create(
-        list_name: Faker::Book.title,
+        list_name: Faker::Cosmere.aon,
         board_id: board.id
 
       )
       3.times do
         Task.create(
-          task_name: Faker::TvShows::RickAndMorty.location,
+          task_name: Faker::Cosmere.allomancer,
           description: Faker::TvShows::RickAndMorty.quote,
           list_id: list.id
         )end

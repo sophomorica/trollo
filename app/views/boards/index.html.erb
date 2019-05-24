@@ -1,38 +1,30 @@
 <h1>all the boards</h1>
 <hr />
 
-  <%# <ol>
-  <li>
- 
-  </li>
-  </ol> %>
 <div class = "card_section">
-  <% @boards.each do |b|%>
+    <% @boards.each do |b|%>
 
-<div class = "ui card">
-  <div class = "content">
-    <div class = "header">
-      <%= b.name%>
+  <div class = "ui card">
+    <div class = "content">
+      <div class = "header">
+        <%= b.name%>
+      </div>
+      <div class = "description">
+        <%b.lists.each do |l| %>
+            <h4><%=l.name%></h4>
+        <%end%>
+      </div>
     </div>
-    <div class = "description">
-      <ol>
-      <%b.lists.each do |l| %>
-        <li>
-          <%=link_to l.name, board_list_path(b,l)%>
-        </li>
-      <%end%>
-      </ol>
+    <div class = "extra content">
+      <div class = "ui two buttons">
+        
+        <%= link_to "View", board_path(b), class: "ui button green inverted"%>
+        <%= link_to "Delete", board_path(b), method: :delete, class: "ui button orange inverted"%>
+      </div>
     </div>
   </div>
-  <div class = "extra content">
-    <div class = "ui two buttons">
-      <div class="ui basic green button"><% link_to board_path(b)%>View</div>
-      
-      <%= link_to "Delete", board_path(b), method: :delete, class: "ui button orange"%>
-    </div>
-  </div>
-</div>
-  <% end%>
+    <% end%>
 
 </div>
+
 
