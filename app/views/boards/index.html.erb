@@ -6,39 +6,33 @@
  
   </li>
   </ol> %>
-<div class = "ui section">
-<% @boards.each do |b|%>
-  <div class="ui cards">
-  <div class="card">
-    <div class="content">
-      <%# <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg"> %>
-      <div class="header">
-        <%= b.name%>
-      </div>
-      <%# <div class="meta">
-        Friends of Veronika
-      </div> %>
-      <div class="description">
-        
-      </div>
+<div class = "card_section">
+  <% @boards.each do |b|%>
+
+<div class = "ui card">
+  <div class = "content">
+    <div class = "header">
+      <%= b.name%>
     </div>
-    <div class="extra content">
-      <div class="ui two buttons">
-        <div class="ui basic green button"><%= link_to "View", board_path(b)%></div>
-        <div class="ui basic red button"><%=link_to "Delete", board_path(b), method: :delete%></div>
-      </div>
+    <div class = "description">
+      <ol>
+      <%b.lists.each do |l| %>
+        <li>
+          <%=link_to l.name, board_list_path(b,l)%>
+        </li>
+      <%end%>
+      </ol>
     </div>
   </div>
-  <%# <div class="card">
-    <div class="content">
-      <img class="right floated mini ui image" src="/images/avatar/large/jenny.jpg">
-      <div class="header">
-        Jenny Hess
-      </div>
-      <div class="meta">
-        New Member
-      </div> %>
-<% end %>
-
+  <div class = "extra content">
+    <div class = "ui two buttons">
+      <div class="ui basic green button"><% link_to board_path(b)%>View</div>
+      
+      <%= link_to "Delete", board_path(b), method: :delete, class: "ui button orange"%>
+    </div>
+  </div>
+</div>
+  <% end%>
 
 </div>
+
